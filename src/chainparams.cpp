@@ -54,11 +54,11 @@ static void convertSeed6(std::vector<CAddress>& vSeedsOut, const SeedSpec6* data
 // + Contains no strange transactions
 static Checkpoints::MapCheckpoints mapCheckpoints =
     boost::assign::map_list_of
-    (     0, uint256("0x0000007926adac4ebf7c394273f1afa659892c3fe833d83e51065a8e378d0da5"));
+    (     0, uint256("0x0x000005e7566b4f1159d8ae28d07e09a83e5dd1cfb0f575360359f5447f540e88"));
 
 static const Checkpoints::CCheckpointData data = {
     &mapCheckpoints,
-    1529655628, // * UNIX timestamp of last checkpoint block
+    1530253194, // * UNIX timestamp of last checkpoint block
     0,     // * total number of transactions between genesis and last checkpoint
                 //   (the tx=... number in the SetBestChain debug.log lines)
     2000        // * estimated number of transactions per day after checkpoint
@@ -69,7 +69,7 @@ static Checkpoints::MapCheckpoints mapCheckpointsTestnet =
     (0,     uint256("0x001"));
 static const Checkpoints::CCheckpointData dataTestnet = {
     &mapCheckpointsTestnet,
-    1523644959,
+    1530253194,
     0,
     2000};
 
@@ -102,10 +102,10 @@ public:
          * The characters are rarely used upper ASCII, not valid as UTF-8, and produce
          * a large 4-byte int at any alignment.
          */
-        pchMessageStart[0] = 0x03;
-        pchMessageStart[1] = 0x32;
-        pchMessageStart[2] = 0x20;
-        pchMessageStart[3] = 0x18;
+        pchMessageStart[0] = 0x04;
+        pchMessageStart[1] = 0x42;
+        pchMessageStart[2] = 0x21;
+        pchMessageStart[3] = 0x28;
         vAlertPubKey = ParseHex("0469c8cd96a0f8faeb0b30b1894feafa46e71eb0ce447ea041d09e35b2001eb500d5a50c84868112864d25039f9a232ccbc8a6310012f031bd2cc4cecefbc3100b");
         nDefaultPort = 10721;
         bnProofOfWorkLimit = ~uint256(0) >> 20; // Aias starting difficulty is 1 / 2^12
@@ -132,7 +132,7 @@ public:
         nBlockFirstFraudulent = ~1; //First block that bad serials emerged
         nBlockLastGoodCheckpoint = ~1; //Last valid accumulator checkpoint
 
-        const char* pszTimestamp = "From CoinWebFactory For AISCoin - Jun 18";
+        const char* pszTimestamp = "From CoinWebFactory For AISCoin - Jun 2018";
         CMutableTransaction txNew;
         txNew.vin.resize(1);
         txNew.vout.resize(1);
@@ -143,13 +143,13 @@ public:
         genesis.hashPrevBlock = 0;
         genesis.hashMerkleRoot = genesis.BuildMerkleTree();
         genesis.nVersion = 1;
-        genesis.nTime = 1529655628;
+        genesis.nTime = 1530253194;
         genesis.nBits = 0x1e0ffff0;
-        genesis.nNonce = 1909938;
+        genesis.nNonce = 2900386;
 
         hashGenesisBlock = genesis.GetHash();
-        assert(hashGenesisBlock == uint256("0x0000007926adac4ebf7c394273f1afa659892c3fe833d83e51065a8e378d0da5"));
-        assert(genesis.hashMerkleRoot == uint256("0x1912a7ffa1a2c7eb6f10ce5663fb6e473bae65b5d42f1eaaeb9267923054d988"));
+        assert(hashGenesisBlock == uint256("0x000005e7566b4f1159d8ae28d07e09a83e5dd1cfb0f575360359f5447f540e88"));
+        assert(genesis.hashMerkleRoot == uint256("0x1bdca56474ace990c88bab3e124cc3138344a4aca5a4f9e85c645e901008facb"));
 
         vSeeds.push_back(CDNSSeedData("95.179.140.202","95.179.140.202"));
         vSeeds.push_back(CDNSSeedData("149.28.228.79","149.28.228.79"));
@@ -179,9 +179,9 @@ public:
         fHeadersFirstSyncingActive = false;
 
         nPoolMaxTransactions = 3;
-        strSporkKey = "047c2725bcbccebd3e7e16a1dfb6735bb7f45ae3b60166c444f93d8d33d75d096223f391c5e0e4a4cce8817e0c53c31846cd088ce8a8f6fd024d0903f587ec4e31";
-        strObfuscationPoolDummyAddress = "ZJUq47KtCqh7X54cqcWVZ2R3SVEFAbKHye";
-        nStartMasternodePayments = 1516371317; //Wed, 25 Jun 2014 20:36:16 GMT
+        strSporkKey = "048DFB964157A4F92DC898E69D19EFBE1FAE8AB068A966D24D348F1A46EB1E0222C5386108AB9EF0A7582C0B9B19005BB2E50B104DF47336B9B36D9A7D00842D82";
+        strObfuscationPoolDummyAddress = "ANUpaWYNf5cREWghKaGPN5X5cvMaMmztAU";
+        nStartMasternodePayments = 1516371317;
 
         /** Zerocoin */
         zerocoinModulus = "0xc95577b6dce0049b0a20c779af38079355abadde1a1d80c353f6cb697a7ae5a087bad39caa5798478551d0f9d91e6267716506f32412de1d19d17588765eb9502b85c6a18abdb05791cfd8b734e960281193705eeece210920cc922b3af3ceb178bf12c22eb565d5767fbf19545639be8953c2c38ffad41f3371e4aac750ac2d7bd614b3faabb453081d5d88fdbb803657a980bc93707e4b14233a2358c97763bf28f7c933206071477e8b371f229bc9ce7d6ef0ed7163aa5dfe13bc15f7816348b328fa2c1e69d5c88f7b94cee7829d56d1842d77d7bb8692e9fc7b7db059836500de8d57eb43c345feb58671503b932829112941367996b03871300f25efb5";
